@@ -1,0 +1,61 @@
+# @package _global_
+
+defaults:
+  - override /data: relpose-distance
+
+name: relpose-distance
+
+pi3:
+  pretrained_model_name_or_path: yyfz233/Pi3
+  # pretrained_model_name_or_path: checkpoints/Pi3
+
+vggt:
+  pretrained_model_name_or_path: facebook/VGGT-1B
+
+eval_datasets:
+  # - sintel
+  # - tum
+  - scannetv2
+
+no_crop: False
+load_img_size: 512
+pose_eval_stride: 4
+pose_eval_num_frames: 6
+
+depth_scale: 1000
+min_valid_depth: 1e-3
+max_valid_depth: 10.0
+
+num_gpus: 1
+device: cuda
+
+verbose: False
+
+seed: 42
+
+save_suffix: null
+
+tco_steps: 0
+tco_lr: 1e-4
+# ----- depth energy parameters -----
+lambda_depth: 1
+depth_alignment_mode: per_scene
+depth_confidence_percentile: 0.5
+depth_scale_reg_weight: 0
+depth_shift_reg_weight: 0
+# ----- multiview consistency energy parameters -----
+lambda_mv_consistency: 1
+mv_depth_weight: 1
+mv_normal_weight: 0
+mv_rgb_weight: 0
+num_view_groups: 100
+use_cos_weighting: True
+# ----- redundancy consistency energy parameters -----
+lambda_redundancy: 0
+
+lora_rank: 4
+lora_alpha: 16
+lora_target_modules: ['qkv','proj','fc1','fc2']
+lora_dropout: 0.0
+
+debug: True

@@ -1,0 +1,68 @@
+# @package _global_
+
+defaults:
+  - override /data: mv_recon
+
+name: mv_recon
+
+pi3:
+  pretrained_model_name_or_path: yyfz233/Pi3
+  # pretrained_model_name_or_path: checkpoints/Pi3
+
+vggt:
+  pretrained_model_name_or_path: facebook/VGGT-1B
+
+pow3r:
+  resolver_type: sliding
+  crop_resolution: 512
+  checkpoint_path: /home/leizhou/Research/pow3r/checkpoints/Pow3R_ViTLarge_BaseDecoder_512_linear.pth
+
+eval_datasets:
+  # - 7scenes-sparse
+  # - 7scenes-dense
+  # - NRGBD-sparse
+  # - NRGBD-dense
+  # - DTU
+  - ETH3D
+
+no_crop: True
+load_img_size: 518
+
+num_gpus: 1
+device: cuda
+
+verbose: False
+
+seed: 42
+
+save_suffix: null
+
+tco_steps: 10
+tco_lr: 1e-4
+# ----- camera energy parameters -----
+lambda_pose: 1
+pose_translation_weight: 1
+enforce_canonical_reference: True
+lambda_intrinsics: 0.01
+tco_num_pose_pairs: None
+pose_rot_loss_type: 'angle'
+pose_trans_loss_type: 'normed_l1'
+# ----- multiview consistency energy parameters -----
+lambda_mv_consistency: 1
+mv_depth_weight: 0
+mv_normal_weight: 0
+mv_rgb_weight: 1
+num_view_groups: 100
+use_cos_weighting: True
+# ----- redundancy consistency energy parameters -----
+lambda_redundancy: 0
+
+lora_rank: 4
+lora_alpha: 16
+lora_target_modules: ['qkv','proj','fc1','fc2']
+lora_dropout: 0.0
+
+no_pose_prior: False
+no_intrinsics_prior: False
+use_robust_umeyama: False
+debug: False
