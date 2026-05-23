@@ -136,6 +136,6 @@ TCO/
 
 ## Acknowledgements
 Thanks to these great repositories:
-- [Pi3](https://github.com/yyfz233/Pi3) — Pi3: Permutation-Equivariant Visual Geometry Learning
+- [Pi3](https://github.com/yyfz/Pi3) — Pi3: Permutation-Equivariant Visual Geometry Learning
 - [VGGT](https://github.com/facebookresearch/vggt) — Visual Geometry Grounded Transformer
 - [gsplat](https://github.com/nerfstudio-project/gsplat) — Gaussian Splatting library
