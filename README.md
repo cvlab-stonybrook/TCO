@@ -74,6 +74,20 @@ Evaluate on ScanNet v2:
 bash scripts/tco_vggt_scannetv2.sh
 ```
 
+### Multi-GPU Parallel Evaluation
+
+Each task has a `*_parallel.sh` variant that distributes sequences across multiple GPUs:
+
+```bash
+NUM_GPUS=8 GPUS=0,1,2,3,4,5,6,7 bash scripts/tco_vggt_eth3d_parallel.sh
+NUM_GPUS=8 GPUS=0,1,2,3,4,5,6,7 bash scripts/tco_vggt_7scenes_parallel.sh
+NUM_GPUS=8 GPUS=0,1,2,3,4,5,6,7 bash scripts/tco_vggt_dtu_parallel.sh
+NUM_GPUS=8 GPUS=0,1,2,3,4,5,6,7 bash scripts/tco_vggt_nrgbd_parallel.sh
+NUM_GPUS=8 GPUS=0,1,2,3,4,5,6,7 bash scripts/tco_vggt_scannetv2_parallel.sh
+```
+
+Set `NUM_GPUS` and `GPUS` to match your available hardware (e.g., `NUM_GPUS=4 GPUS=0,1,2,3` for 4 GPUs).
+
 ### Custom Runs
 
 All scripts are thin wrappers around Hydra-configured Python entry points. You can override any config parameter from the command line:
